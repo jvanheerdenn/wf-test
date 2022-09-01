@@ -12,9 +12,9 @@ export class TopMenuNavbarComponent implements OnInit {
   constructor(private readonly route: ActivatedRoute) {}
 
   links: TopNavbarLinks[] = [
-    { context: 'MENU', navigation: TOP_NAVBAR_LINKS.MENU, isActiveRoute: true },
-    { context: 'REWARDS', navigation: TOP_NAVBAR_LINKS.REWARDS, isActiveRoute: false },
-    { context: 'GIFT CARDS', navigation: TOP_NAVBAR_LINKS.GIFT_CARDS, isActiveRoute: false }
+    { context: 'Menu', navigation: TOP_NAVBAR_LINKS.MENU, isActiveRoute: true },
+    { context: 'Rewards', navigation: TOP_NAVBAR_LINKS.REWARDS, isActiveRoute: false },
+    { context: 'Gift Cards', navigation: TOP_NAVBAR_LINKS.GIFT_CARDS, isActiveRoute: false }
   ];
 
   ngOnInit(): void {
