@@ -1,0 +1,21 @@
+.sb-left-navbar {
+  @media (min-width: 1024px) {
+    flex-basis: 150px;
+  }
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__subtitle-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__subtitle {
+    text-decoration: none;
+    color: #00000094;
+    cursor: pointer;
+  }
+}
