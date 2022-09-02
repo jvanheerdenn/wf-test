@@ -1,4 +1,10 @@
 export interface Menu {
-  title: string;
-  subtitles: string[];
+  submenuTitle: string;
+  submenuDetail: SubmenuDetail[];
+}
+
+interface SubmenuDetail {
+  detailTitle: string;
+  detailImg: string;
+  detailList?: Menu[];
 }
