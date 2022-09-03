@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { SbStore } from 'src/app/sb.store';
 
 @Component({
   selector: 'app-menu',
@@ -6,4 +7,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MenuComponent {}
+export class MenuComponent implements OnInit {
+  menuTitles$ = this.sbStore.getMenuTitles$;
+
+  constructor(private readonly sbStore: SbStore) {}
+
+  ngOnInit(): void {
+    this.initStore();
+  }
+
+  private initStore() {
+    this.sbStore.getMenu();
+  }
+}

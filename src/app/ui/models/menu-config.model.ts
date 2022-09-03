@@ -3,8 +3,9 @@ export interface Menu {
   submenuDetail: SubmenuDetail[];
 }
 
-interface SubmenuDetail {
+export interface SubmenuDetail {
   detailTitle: string;
   detailImg: string;
   detailList?: Menu[];
+  calories?: number;
 }

@@ -1,10 +1,10 @@
-<nav class="sb-left-navbar bg-white py-3">
+<nav class="sb-left-navbar bg-white py-3" *ngIf="menu$ | async as menuConfig">
   <div class="container-fluid">
     <section *ngFor="let menu of menuConfig">
-      <h4 class="sb-left-navbar__title mt-4">{{ menu.submenuTitle }}</h4>
+      <h4 class="sb-left-navbar__title mt-4">{{ menu.title }}</h4>
       <ul class="sb-left-navbar__subtitle-list">
-        <li class="py-2" *ngFor="let submenu of menu.submenuDetail">
-          <a class="sb-left-navbar__subtitle">{{ submenu.detailTitle }}</a>
+        <li class="py-2" *ngFor="let submenu of menu.submenuTitles">
+          <a class="sb-left-navbar__subtitle">{{ submenu }}</a>
         </li>
       </ul>
     </section>
