@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { menuConfig } from '../menu.config';
+import { menuConfig } from '../../menu.config';
 
 @Component({
   selector: 'app-menu-submenu',

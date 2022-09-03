@@ -1,4 +1,4 @@
-import { Menu } from './models/menu-config.model';
+import { Menu } from './ui/models/menu-config.model';
 
 export const menuConfig: Menu[] = [
   {
