@@ -1,54 +1,5 @@
-@font-face {
-  font-display: swap;
-  font-family: SoDoSans;
-  font-style: normal;
-  font-weight: 400;
-  src: url(/app-assets/a04d3c474ae54100589fa362d8f6db2a.woff);
-}
-
-@font-face {
-  font-display: swap;
-  font-family: SoDoSans;
-  font-style: normal;
-  font-weight: 600;
-  src: url(/app-assets/9072643e9f07efac73cc4b79a2b55d7c.woff);
-}
-
-@font-face {
-  font-display: swap;
-  font-family: SoDoSans;
-  font-style: normal;
-  font-weight: 700;
-  src: url(/app-assets/891bac4bf2cf726a4a3ccf8560d7c300.woff);
-}
-
-body {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-feature-settings: 'calt';
-  background-color: #fff;
-  color: rgba(0, 0, 0, 0.87);
-  font-family: SoDoSans, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 1.4rem;
-  font-weight: 400;
-  height: 100%;
-  letter-spacing: -0.01em;
-  line-height: 1.5;
-  margin: 0;
-}
-
 main {
   position: relative;
   z-index: 1;
   padding-top: 120px;
-}
-
-.left-menu-bar {
-  @media (min-width: 1024px) {
-    padding-left: 131px;
-    display: flex;
-  }
-  @media (max-width: 1024px) {
-    display: none;
-  }
 }
