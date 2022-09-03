@@ -4,7 +4,11 @@
       <h4 class="sb-left-navbar__title mt-4">{{ menu.mainTitle }}</h4>
       <ul class="sb-left-navbar__subtitle-list">
         <li class="py-2" *ngFor="let submenu of menu.subCategories">
-          <a class="sb-left-navbar__subtitle">{{ submenu.detailTitle }}</a>
+          <a
+            class="sb-left-navbar__subtitle"
+            (click)="setSelectedMenu(submenu)"
+            >{{ submenu.detailTitle }}</a
+          >
         </li>
       </ul>
     </section>

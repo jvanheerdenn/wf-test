@@ -4,7 +4,8 @@ import { Menu, SubmenuDetail } from '../ui/models/menu-config.model';
 export interface SbStoreState {
   status: SbStoreStatus;
   menu: Menu[];
-  selectedMenu: SubmenuDetail[];
+  selectedMenu: MenuBase[];
+  selectedMenuTitle: string;
   spinner: boolean;
 }
 

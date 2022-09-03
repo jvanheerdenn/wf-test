@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
+import { SubmenuDetail } from '../models/menu-config.model';
 
 @Component({
   selector: 'app-card',
@@ -6,4 +7,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardComponent {}
+export class CardComponent {
+  @Input('menu') menuDetails!: SubmenuDetail[];
+  @Output() selectedMenu = new EventEmitter<SubmenuDetail>();
+
+  onClick(selectedMenu: SubmenuDetail) {
+    this.selectedMenu.emit(selectedMenu);
+  }
+}
