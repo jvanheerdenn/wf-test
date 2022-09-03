@@ -1,0 +1,42 @@
+.sb-menu {
+  &__container {
+    padding-bottom: 2rem;
+
+    @media (min-width: 1024px) {
+      padding-bottom: 3rem;
+    }
+
+    @media (max-width: 1023px) {
+      padding: 30px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 25px;
+    padding-bottom: 1.6rem;
+    margin-bottom: 0;
+  }
+
+  &__hr-divisor {
+    border: 0;
+    margin: 0;
+    padding-bottom: 25px;
+
+    &::before {
+      border-top: 2px solid rgba(0, 0, 0, 0.5);
+      content: '';
+      display: block;
+      border-top-width: 1px;
+    }
+  }
+}
+
+.sb-grid {
+  &__container {
+    margin: 0 -0.4rem;
+    display: block;
+    padding: 0;
+    text-align: left;
+  }
+}

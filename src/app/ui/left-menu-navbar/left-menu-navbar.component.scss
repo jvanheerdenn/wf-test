@@ -1,8 +1,4 @@
 .sb-left-navbar {
-  @media (min-width: 1024px) {
-    flex-basis: 150px;
-  }
-
   &__title {
     font-weight: 600;
   }
@@ -17,5 +13,13 @@
     text-decoration: none;
     color: #00000094;
     cursor: pointer;
+  }
+
+  @media (min-width: 1024px) {
+    flex-basis: 150px;
+  }
+
+  @media (max-width: 1023px) {
+    display: none;
   }
 }
