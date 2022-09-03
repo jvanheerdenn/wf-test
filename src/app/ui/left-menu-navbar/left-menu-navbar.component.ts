@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SbMenuTitles } from 'src/app/models/store.model';
+import { MenuBase } from 'src/app/models/store.model';
 
 @Component({
   selector: 'app-left-menu-navbar',
@@ -9,5 +9,5 @@ import { SbMenuTitles } from 'src/app/models/store.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LeftMenuNavbarComponent {
-  @Input('menu') menu$!: Observable<SbMenuTitles[]>;
+  @Input('menu') menu$!: Observable<MenuBase[]>;
 }

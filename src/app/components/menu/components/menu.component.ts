@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { SbStore } from 'src/app/sb.store';
 
 @Component({
@@ -8,7 +9,7 @@ import { SbStore } from 'src/app/sb.store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenuComponent implements OnInit {
-  menuTitles$ = this.sbStore.getMenuTitles$;
+  menuTitles$!: Observable<any>;
 
   constructor(private readonly sbStore: SbStore) {}
 
@@ -16,7 +17,16 @@ export class MenuComponent implements OnInit {
     this.initStore();
   }
 
-  private initStore() {
+  defineMenuTitles(selectedMenu = ''): void {
+    if (selectedMenu) {
+      this.menuTitles$ = this.sbStore.getMenuTitles$(selectedMenu);
+      return;
+    }
+    this.menuTitles$ = this.sbStore.getMenuTitles$();
+  }
+
+  private initStore(): void {
     this.sbStore.getMenu();
+    this.defineMenuTitles();
   }
 }

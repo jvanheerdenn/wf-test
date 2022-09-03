@@ -8,7 +8,7 @@ export interface SbStoreState {
   spinner: boolean;
 }
 
-export interface SbMenuTitles {
-  title: string;
-  submenuTitles: string[];
+export interface MenuBase {
+  mainTitle: string;
+  subCategories: SubmenuDetail[];
 }

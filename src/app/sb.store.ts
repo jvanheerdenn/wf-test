@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { filter, switchMap, tap } from 'rxjs';
+import { filter, Observable, switchMap, tap } from 'rxjs';
 import { MenuService } from './components/menu/services/menu.service';
-import { SbStoreState } from './models/store.model';
-import { Menu } from './ui/models/menu-config.model';
+import { MenuBase, SbStoreState } from './models/store.model';
+import { Menu, SubmenuDetail } from './ui/models/menu-config.model';
 
 export enum SbStoreStatus {
   Init = 'Init',
@@ -22,12 +22,23 @@ const defaultState: SbStoreState = {
 @Injectable({ providedIn: 'root' })
 export class SbStore extends ComponentStore<SbStoreState> {
   // SELECTORS
-  readonly getMenuTitles$ = this.select(({ menu }) =>
-    menu.map(({ submenuTitle, submenuDetail }) => ({
-      title: submenuTitle,
-      submenuTitles: submenuDetail.map(({ detailTitle }) => detailTitle)
-    }))
-  );
+  readonly getMenuTitles$ = (selectedTitle = ''): Observable<MenuBase[]> => {
+    if (selectedTitle) {
+      return this.select(({ menu }) =>
+        menu
+          .map((menuOption: Menu) => menuOption.submenuDetail.find((detail: SubmenuDetail) => detail.detailTitle === selectedTitle))
+          .filter((element) => !!element)
+          .map(({ detailTitle, detailList }: any) => ({ mainTitle: detailTitle, subCategories: detailList }))
+      );
+    }
+
+    return this.select(({ menu }) =>
+      menu.map(({ submenuTitle, submenuDetail }) => ({
+        mainTitle: submenuTitle,
+        subCategories: submenuDetail
+      }))
+    );
+  };
 
   // UPDATERS
   readonly setMenu = this.updater((state: SbStoreState, menu: Menu[]) => ({
