@@ -53,6 +53,7 @@
               <li class="sb-hamburguer-nav__link" *ngFor="let link of links">
                 <a
                   class="nav-link nav-link__offcanvas py-0"
+                  data-bs-dismiss="offcanvas"
                   aria-current="page"
                   (click)="onMenuClick(link)"
                   >{{ link.context }}</a
