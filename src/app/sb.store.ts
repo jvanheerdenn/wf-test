@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { catchError, delay, EMPTY, exhaustMap, filter, Observable, of, switchMap, tap, withLatestFrom } from 'rxjs';
+import { catchError, EMPTY, filter, Observable, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { MenuService } from './components/menu/services/menu.service';
 import { MenuBase, SbStoreState } from './models/store.model';
 import { Menu, SubmenuDetail } from './ui/models/menu-config.model';
@@ -96,7 +96,7 @@ export class SbStore extends ComponentStore<SbStoreState> {
       withLatestFrom(this.state$),
       filter(([, state]) => [SbStoreStatus.Loaded, SbStoreStatus.Error].includes(state.status)),
       tap(() => this.setStatus(SbStoreStatus.Loading)),
-      exhaustMap(([selectedMenu]) =>
+      switchMap(([selectedMenu]) =>
         this.getMenuTitles$(selectedMenu).pipe(
           tapResponse(
             (menu: MenuBase[]) => {

@@ -5,5 +5,5 @@ import { Menu } from 'src/app/ui/models/menu-config.model';
 
 @Injectable({ providedIn: 'root' })
 export class MenuService {
-  getMenu = (): Observable<Menu[]> => of(menuConfig).pipe(delay(2000));
+  getMenu = (): Observable<Menu[]> => of(menuConfig).pipe(delay(500));
 }
