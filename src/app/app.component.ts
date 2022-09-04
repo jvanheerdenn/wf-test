@@ -1,12 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
-import { SbStore } from './sb.store';
+import { SbStore, SbStoreStatus } from './sb.store';
 import { TopNavbarLinks, TOP_NAVBAR_LINKS } from './ui/models/top-menu-navbar.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit, OnDestroy {
   links = [
@@ -15,6 +16,8 @@ export class AppComponent implements OnInit, OnDestroy {
     { context: 'Gift Cards', navigation: TOP_NAVBAR_LINKS.GIFT_CARDS, isActiveRoute: false }
   ];
   topNavbarLinks$ = new BehaviorSubject<TopNavbarLinks[]>(this.links);
+  status$ = this.sbStore.getStatus$;
+  STATUS = SbStoreStatus;
 
   private readonly destroy$ = new Subject<any>();
 

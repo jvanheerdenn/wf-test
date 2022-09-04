@@ -42,6 +42,7 @@ export class SbStore extends ComponentStore<SbStoreState> {
   };
 
   readonly getSelectedMenu$ = this.select(({ selectedMenu }) => selectedMenu);
+  readonly getStatus$ = this.select(({ status }) => status);
 
   // UPDATERS
   readonly setMenu = this.updater((state: SbStoreState, menu: Menu[]) => ({
@@ -97,7 +98,6 @@ export class SbStore extends ComponentStore<SbStoreState> {
       tap(() => this.setStatus(SbStoreStatus.Loading)),
       exhaustMap(([selectedMenu]) =>
         this.getMenuTitles$(selectedMenu).pipe(
-          delay(1000),
           tapResponse(
             (menu: MenuBase[]) => {
               if (this.get().selectedMenu.length === 0) {

@@ -5,5 +5,15 @@
   ></app-top-menu-navbar>
 </header>
 <main>
-  <router-outlet></router-outlet>
+  <div *ngIf="status$ | async as storeStatus">
+    <app-starbucks-loader
+      *ngIf="
+        storeStatus === STATUS.Init || storeStatus === STATUS.Loading;
+        else outlet
+      "
+    ></app-starbucks-loader>
+  </div>
+  <ng-template #outlet>
+    <router-outlet></router-outlet>
+  </ng-template>
 </main>
