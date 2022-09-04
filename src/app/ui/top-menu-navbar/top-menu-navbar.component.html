@@ -1,6 +1,6 @@
 <nav class="navbar bg-white fixed-top" *ngIf="links$ | async as links">
   <div class="container-fluid">
-    <a class="navbar-brand cursor-pointer">
+    <a class="navbar-brand cursor-pointer" (click)="onLogoClick()">
       <img class="sb-nav__logo" />
     </a>
 

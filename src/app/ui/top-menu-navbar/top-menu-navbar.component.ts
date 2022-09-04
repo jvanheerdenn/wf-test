@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TopNavbarLinks } from '../models/top-menu-navbar.model';
+import { TopNavbarLinks, TOP_NAVBAR_LINKS } from '../models/top-menu-navbar.model';
 
 @Component({
   selector: 'app-top-menu-navbar',
@@ -14,5 +14,9 @@ export class TopMenuNavbarComponent {
 
   onMenuClick({ navigation }: TopNavbarLinks) {
     this.urlLink.emit(navigation);
+  }
+
+  onLogoClick(): void {
+    this.urlLink.emit(TOP_NAVBAR_LINKS.MENU);
   }
 }

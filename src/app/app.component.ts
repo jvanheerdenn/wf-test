@@ -25,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.setNavigationActiveRoute();
+    this.sbStore.getMenu();
   }
 
   ngOnDestroy(): void {
