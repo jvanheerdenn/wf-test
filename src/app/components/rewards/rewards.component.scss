@@ -1,0 +1,8 @@
+iframe {
+  display: block;
+  background: transparent;
+  border: none;
+  height: calc(100vh - 30px);
+  width: 100%;
+  clip-path: polygon(98% 12%, 99% 207%, -20% 100%, 0% 12%);
+}
