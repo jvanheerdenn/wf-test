@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
-import { catchError, EMPTY, exhaustMap, filter, Observable, of, switchMap, tap, withLatestFrom } from 'rxjs';
+import { catchError, delay, EMPTY, exhaustMap, filter, Observable, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { MenuService } from './components/menu/services/menu.service';
 import { MenuBase, SbStoreState } from './models/store.model';
 import { Menu, SubmenuDetail } from './ui/models/menu-config.model';
@@ -65,7 +65,7 @@ export class SbStore extends ComponentStore<SbStoreState> {
   readonly getMenu = this.effect(($trigger) =>
     $trigger.pipe(
       withLatestFrom(this.state$),
-      filter(([, state]) => [SbStoreStatus.Init, SbStoreStatus.Error].includes(state.status)),
+      filter(([, state]) => [SbStoreStatus.Init, SbStoreStatus.Loaded, SbStoreStatus.Error].includes(state.status)),
       tap(() => this.setStatus(SbStoreStatus.Loading)),
       switchMap(() =>
         this.menuService.getMenu().pipe(
@@ -94,8 +94,10 @@ export class SbStore extends ComponentStore<SbStoreState> {
     $trigger.pipe(
       withLatestFrom(this.state$),
       filter(([, state]) => [SbStoreStatus.Loaded, SbStoreStatus.Error].includes(state.status)),
+      tap(() => this.setStatus(SbStoreStatus.Loading)),
       exhaustMap(([selectedMenu]) =>
         this.getMenuTitles$(selectedMenu).pipe(
+          delay(1000),
           tapResponse(
             (menu: MenuBase[]) => {
               if (this.get().selectedMenu.length === 0) {
@@ -108,6 +110,7 @@ export class SbStore extends ComponentStore<SbStoreState> {
                 subCategories: el.submenuDetail
               }));
               this.setSelectedMenu(newSelectedMenu);
+              this.setStatus(SbStoreStatus.Loaded);
             },
             () => this.setStatus(SbStoreStatus.Error)
           )

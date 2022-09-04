@@ -1,4 +1,4 @@
-<nav class="navbar bg-white fixed-top">
+<nav class="navbar bg-white fixed-top" *ngIf="links$ | async as links">
   <div class="container-fluid">
     <a class="navbar-brand cursor-pointer">
       <img class="sb-nav__logo" />
@@ -65,52 +65,3 @@
     </div>
   </div>
 </nav>
-
-<!-- <div class="collapse" id="navToggler">
-  <div class="bg-white sb-hamburguer-nav pt-3">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="sb-hamburguer-nav__link" *ngFor="let link of links">
-        <a
-          class="nav-link py-0"
-          aria-current="page"
-          (click)="onMenuClick(link)"
-          >{{ link.context }}</a
-        >
-      </li>
-    </ul>
-  </div>
-</div>
-<nav class="navbar fixed-top navbar-expand-sm sb-nav__container py-0">
-  <div class="container-fluid">
-    <a class="navbar-brand cursor-pointer">
-      <img class="sb-nav__logo" />
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navToggler"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li
-          [ngClass]="
-            link.isActiveRoute
-              ? 'nav-item sb-nav__link sb-nav__active-link'
-              : 'nav-item sb-nav__link'
-          "
-          *ngFor="let link of links"
-        >
-          <a
-            class="nav-link active py-2 px-2"
-            aria-current="page"
-            (click)="onMenuClick(link)"
-            >{{ link.context | uppercase }}</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav> -->

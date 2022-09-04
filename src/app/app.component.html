@@ -1,5 +1,8 @@
 <header>
-  <app-top-menu-navbar></app-top-menu-navbar>
+  <app-top-menu-navbar
+    [links$]="topNavbarLinks$"
+    (urlLink)="navigateTo($event)"
+  ></app-top-menu-navbar>
 </header>
 <main>
   <router-outlet></router-outlet>

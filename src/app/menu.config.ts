@@ -1595,7 +1595,7 @@ export const menuConfig: Menu[] = [
       },
       {
         detailTitle: 'Traditional',
-        detailImg: '',
+        detailImg: 'https://globalassets.starbucks.com/assets/9e2617bd4b0744cb940c67b3fad9ca35.jpg?impolicy=1by1_tight_288',
         detailList: [
           {
             submenuTitle: 'Traditional',

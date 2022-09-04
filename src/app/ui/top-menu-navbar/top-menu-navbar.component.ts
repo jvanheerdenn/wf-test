@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { TopNavbarLinks, TOP_NAVBAR_LINKS } from '../models/top-menu-navbar.model';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TopNavbarLinks } from '../models/top-menu-navbar.model';
 
 @Component({
   selector: 'app-top-menu-navbar',
@@ -9,19 +9,13 @@ import { TopNavbarLinks, TOP_NAVBAR_LINKS } from '../models/top-menu-navbar.mode
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopMenuNavbarComponent implements OnInit {
-  constructor(private readonly route: ActivatedRoute) {}
-
-  links: TopNavbarLinks[] = [
-    { context: 'Menu', navigation: TOP_NAVBAR_LINKS.MENU, isActiveRoute: true },
-    { context: 'Rewards', navigation: TOP_NAVBAR_LINKS.REWARDS, isActiveRoute: false },
-    { context: 'Gift Cards', navigation: TOP_NAVBAR_LINKS.GIFT_CARDS, isActiveRoute: false }
-  ];
+  @Input() links$!: Observable<TopNavbarLinks[]>;
+  @Output() urlLink = new EventEmitter<string>();
 
   ngOnInit(): void {
-    this.route.url.subscribe((res) => console.log(res));
+    this.links$.subscribe((val) => console.log(val));
   }
-
   onMenuClick({ navigation }: TopNavbarLinks) {
-    console.log(navigation);
+    this.urlLink.emit(navigation);
   }
 }
