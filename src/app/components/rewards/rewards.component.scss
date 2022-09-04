@@ -1,4 +1,7 @@
 iframe {
+  @media (max-width: 450px) {
+    clip-path: polygon(95% 9%, 98% 207%, -20% 100%, 0% 9%);
+  }
   display: block;
   background: transparent;
   border: none;
