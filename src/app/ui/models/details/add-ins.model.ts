@@ -1,11 +1,27 @@
+import { UIType } from '../menu-config.model';
+
 export interface AddIns {
-  lineTheCup?: LINE_THE_CUP[];
-  room?: ROOM[];
-  creamer?: Creamer;
-  water?: WATER[];
-  liquidSweetner?: LIQUID_SWEETENER[];
-  sweetnerPackets?: SWEETNER_PACKETS[];
-  powders?: Powders;
+  title: string;
+  type: UIType;
+  details:
+    | [LINE_THE_CUP[]]
+    | [ROOM[]]
+    | [
+        MILK_CREAMER[],
+        ALMONDMILK[],
+        COCONUTMILK[],
+        CREAM[],
+        HEAVY_CREAM[],
+        NON_FAT_MILK[],
+        OATMILK[],
+        SOYMILK[],
+        WHOLE_MILK[],
+        VANILLA_SWEET_CREAM[]
+      ]
+    | [WATER[]]
+    | [LIQUID_SWEETNER[]]
+    | [SWEETNER_PACKETS[]]
+    | [CHOCOLATE_MALT_POWDER[]];
 }
 
 export enum LINE_THE_CUP {
@@ -18,19 +34,6 @@ export enum ROOM {
   LIGHT = 'Light Room',
   NO_ROOM = 'No Room',
   ROOM = 'Room'
-}
-
-export interface Creamer {
-  milk?: MILK_CREAMER[];
-  almondmilk?: ALMONDMILK[];
-  coconutmilk?: COCONUTMILK[];
-  cream?: CREAM[];
-  heavyCream?: HEAVY_CREAM[];
-  nonfatMilk?: NON_FAT_MILK[];
-  oatMilk?: OATMILK[];
-  soymilk?: SOYMILK[];
-  wholeMilk?: WHOLE_MILK[];
-  vanillaSweetCream?: VANILLA_SWEET_CREAM[];
 }
 
 export enum MILK_CREAMER {
@@ -98,6 +101,9 @@ export enum VANILLA_SWEET_CREAM {
   SPLASH = 'Splash of Vanilla Sweet Cream'
 }
 
+export interface Water {
+  title: string;
+}
 export enum WATER {
   EXTRA = 'Extra Water',
   LIGHT = 'Light Water',
@@ -105,7 +111,7 @@ export enum WATER {
   WATER = 'Water'
 }
 
-export enum LIQUID_SWEETENER {
+export enum LIQUID_SWEETNER {
   CLASSIC_SYRUP = 'Classic Syrup',
   LIQUID_CANE_SUGAR = 'Liquid Cane Sugar',
   HONEY_BLEND = 'Honey Blend'
@@ -117,11 +123,6 @@ export enum SWEETNER_PACKETS {
   HONEY = 'Honey',
   SPLENDA = 'Splenda',
   STEVIA_RAW = 'Stevia in the Raw'
-}
-
-export interface Powders {
-  chocolate: CHOCOLATE_MALT_POWDER[];
-  vanilla: number;
 }
 
 export enum CHOCOLATE_MALT_POWDER {

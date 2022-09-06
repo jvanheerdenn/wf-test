@@ -1,17 +1,20 @@
+import { UIType } from '../menu-config.model';
 import { AddIns } from './add-ins.model';
 import { ExpressoShotOptions } from './espresso-shot-options.model';
 import { Flavors } from './flavors.model';
+import { Milk } from './milk.model';
 import { Toppings } from './toppings.model';
 
 export interface DetailData {
   calories?: number;
   size?: SIZE_OPTIONS[];
-  flavors?: Flavors;
-  toppings?: Toppings;
-  tea?: TEA[];
-  addIns?: AddIns;
-  espressoShotOptions?: ExpressoShotOptions;
-  cupOptions?: CUP_SIZES[];
+  milk?: Milk[];
+  flavors?: Flavors[];
+  toppings?: Toppings[];
+  tea?: Tea[];
+  addIns?: AddIns[];
+  espressoShotOptions?: ExpressoShotOptions[];
+  cupOptions?: CupSizes[];
 }
 
 export enum SIZE_OPTIONS {
@@ -25,8 +28,20 @@ export enum SIZE_OPTIONS {
   QUAD = 'Quad 3 fl oz'
 }
 
+export interface Tea {
+  title: string;
+  type: UIType;
+  details: [TEA[]];
+}
+
 export enum TEA {
   CHAI = 'Chai'
+}
+
+export interface CupSizes {
+  title: string;
+  type: UIType;
+  details: [CUP_SIZES[]];
 }
 
 export enum CUP_SIZES {

@@ -1,6 +1,9 @@
+import { UIType } from '../menu-config.model';
+
 export interface Flavors {
-  syrups?: SYRUPS[];
-  sauces?: SAUCES[];
+  title: string;
+  type: UIType;
+  details: [SAUCES[]] | [SYRUPS[]];
 }
 
 export enum SYRUPS {

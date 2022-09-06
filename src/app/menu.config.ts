@@ -1,42 +1,13 @@
-import {
-  ALMONDMILK,
-  CHOCOLATE_MALT_POWDER,
-  COCONUTMILK,
-  CREAM,
-  HEAVY_CREAM,
-  LINE_THE_CUP,
-  LIQUID_SWEETENER,
-  MILK_CREAMER,
-  NON_FAT_MILK,
-  OATMILK,
-  ROOM,
-  SOYMILK,
-  SWEETNER_PACKETS,
-  VANILLA_SWEET_CREAM,
-  WHOLE_MILK
-} from './ui/models/details/add-ins.model';
-import { SIZE_OPTIONS, TEA } from './ui/models/details/details.model';
-import { EXPRESSO_ROAST_OPTIONS } from './ui/models/details/espresso-shot-options.model';
-import { SAUCES, SYRUPS } from './ui/models/details/flavors.model';
-import {
-  CARAMEL_DRIZZLE,
-  CHOCOLATE_CREAM_COLD,
-  CINNAMON_DOLCE_SPRINKLES,
-  MOCHA_DRIZZLE,
-  POWDERS,
-  PUMPKIN_CREAM_COLD,
-  PUMPKIN_SPICE,
-  SALTED_CARAMEL_CREAM_COLD,
-  SPICED_APPLE_DRIZZLE,
-  VANILLA_SWEET_CREAM_COLD,
-  WHIPPED_CREAM
-} from './ui/models/details/toppings.model';
+import { TEA } from './ui/models/details/details.model';
+import { SHOTS } from './ui/models/details/espresso-shot-options.model';
+import { POWDERS, WHIPPED_CREAM } from './ui/models/details/toppings.model';
 import { Menu } from './ui/models/menu-config.model';
 import {
   DEFAULT_ALMONDMILK_CREAMER,
   DEFAULT_CARAMEL_COLDFOAM,
   DEFAULT_CARAMEL_DRIZZLE,
   DEFAULT_CHOCOLATE_COLDFOAM,
+  DEFAULT_CHOCOLATE_POWDERS,
   DEFAULT_CINNAMON_TOPPING,
   DEFAULT_COCONUTMILK_CREAMER,
   DEFAULT_CREAM_CREAMER,
@@ -45,12 +16,16 @@ import {
   DEFAULT_LINE_THE_CUP,
   DEFAULT_LIQUID_SWEETNER,
   DEFAULT_MILK_CREAMER,
+  DEFAULT_MILK_FOAM,
+  DEFAULT_MILK_OPTIONS,
+  DEFAULT_MILK_TEMPERATURE,
   DEFAULT_MOCHA_DRIZZLE,
   DEFAULT_NON_FAT_MILK_CREAMER,
   DEFAULT_OAT_MILK_CREAMER,
   DEFAULT_PUMPKIN_COLDFOAM,
   DEFAULT_PUMPKIN_TOPPING,
   DEFAULT_RISTRETO_LONG_SHOT,
+  DEFAULT_ROOM,
   DEFAULT_SAUCES,
   DEFAULT_SIZE_OPTIONS_1,
   DEFAULT_SOY_MILK_CREAMER,
@@ -60,7 +35,8 @@ import {
   DEFAULT_VANILLA_COLDFOAM,
   DEFAULT_VANILLA_CREAMER,
   DEFAULT_WATER,
-  DEFAULT_WHOLE_MILK_CREAMER
+  DEFAULT_WHOLE_MILK_CREAMER,
+  MENU_TITLES
 } from './ui/models/menu-constants';
 
 export const menuConfig: Menu[] = [
@@ -80,53 +56,58 @@ export const menuConfig: Menu[] = [
                 detailData: {
                   calories: 15,
                   size: [...DEFAULT_SIZE_OPTIONS_1],
-                  flavors: {
-                    syrups: [...DEFAULT_SYRUPS],
-                    sauces: [...DEFAULT_SAUCES]
-                  },
-                  toppings: {
-                    toppingOptions: {
-                      cinnamon: [...DEFAULT_CINNAMON_TOPPING],
-                      pumpkin: [...DEFAULT_PUMPKIN_TOPPING]
+                  flavors: [
+                    { title: MENU_TITLES.SYRUPS_TITLE, type: 'counter', details: [DEFAULT_SYRUPS] },
+                    { title: MENU_TITLES.SAUCES_TITLE, type: 'counter', details: [DEFAULT_SAUCES] }
+                  ],
+                  toppings: [
+                    {
+                      title: MENU_TITLES.TOPPING_OPTIONS_TITLE,
+                      type: 'dropdown',
+                      details: [DEFAULT_PUMPKIN_TOPPING, DEFAULT_CINNAMON_TOPPING]
                     },
-                    drizzle: {
-                      caramel: [...DEFAULT_CARAMEL_DRIZZLE],
-                      mocha: [...DEFAULT_MOCHA_DRIZZLE],
-                      spiced: [...DEFAULT_SPICED_DRIZZLE]
+                    {
+                      title: MENU_TITLES.DRIZZLE_TITLE,
+                      type: 'dropdown',
+                      details: [DEFAULT_CARAMEL_DRIZZLE, DEFAULT_MOCHA_DRIZZLE, DEFAULT_SPICED_DRIZZLE]
                     },
-                    coldFoam: {
-                      chocolate: [...DEFAULT_CHOCOLATE_COLDFOAM],
-                      pumpkin: [...DEFAULT_PUMPKIN_COLDFOAM],
-                      caramel: [...DEFAULT_CARAMEL_COLDFOAM],
-                      vanilla: [...DEFAULT_VANILLA_COLDFOAM]
+                    {
+                      title: MENU_TITLES.COLD_FOAM_TITLE,
+                      type: 'dropdown',
+                      details: [DEFAULT_CHOCOLATE_COLDFOAM, DEFAULT_PUMPKIN_COLDFOAM, DEFAULT_CARAMEL_COLDFOAM, DEFAULT_VANILLA_COLDFOAM]
                     },
-                    powders: [POWDERS.CINNAMON_POWDER],
-                    whippedCream: [WHIPPED_CREAM.WHIPPED_CREAM]
-                  },
-                  tea: [TEA.CHAI],
-                  addIns: {
-                    lineTheCup: [...DEFAULT_LINE_THE_CUP],
-                    creamer: {
-                      milk: [...DEFAULT_MILK_CREAMER],
-                      almondmilk: [...DEFAULT_ALMONDMILK_CREAMER],
-                      coconutmilk: [...DEFAULT_COCONUTMILK_CREAMER],
-                      cream: [...DEFAULT_CREAM_CREAMER],
-                      heavyCream: [...DEFAULT_HEAVY_CREAM_CREAMER],
-                      nonfatMilk: [...DEFAULT_NON_FAT_MILK_CREAMER],
-                      oatMilk: [...DEFAULT_OAT_MILK_CREAMER],
-                      soymilk: [...DEFAULT_SOY_MILK_CREAMER],
-                      wholeMilk: [...DEFAULT_WHOLE_MILK_CREAMER],
-                      vanillaSweetCream: [...DEFAULT_VANILLA_CREAMER]
+                    { title: MENU_TITLES.POWDERS_TITLE, type: 'dropdown', details: [POWDERS.CINNAMON_POWDER] },
+                    { title: MENU_TITLES.WHIPPED_CREAM_TITLE, type: 'dropdown', details: [WHIPPED_CREAM.WHIPPED_CREAM] }
+                  ],
+                  tea: [{ title: MENU_TITLES.TEA_TITLE, type: 'counter', details: [[TEA.CHAI]] }],
+                  addIns: [
+                    { title: MENU_TITLES.LINE_THE_CUP_TITLE, type: 'dropdown', details: [DEFAULT_LINE_THE_CUP] },
+                    { title: MENU_TITLES.ROOM_TITLE, type: 'dropdown', details: [DEFAULT_ROOM] },
+                    {
+                      title: MENU_TITLES.CREAMER_TITLE,
+                      type: 'dropdown',
+                      details: [
+                        DEFAULT_MILK_CREAMER,
+                        DEFAULT_ALMONDMILK_CREAMER,
+                        DEFAULT_COCONUTMILK_CREAMER,
+                        DEFAULT_CREAM_CREAMER,
+                        DEFAULT_HEAVY_CREAM_CREAMER,
+                        DEFAULT_NON_FAT_MILK_CREAMER,
+                        DEFAULT_OAT_MILK_CREAMER,
+                        DEFAULT_SOY_MILK_CREAMER,
+                        DEFAULT_WHOLE_MILK_CREAMER,
+                        DEFAULT_VANILLA_CREAMER
+                      ]
                     },
-                    water: [...DEFAULT_WATER],
-                    liquidSweetner: [...DEFAULT_LIQUID_SWEETNER],
-                    sweetnerPackets: [...DEFAULT_SWEETNER_PACKETS]
-                  },
-                  espressoShotOptions: {
-                    expressoShots: 0,
-                    expressoRoastOptions: [...DEFAULT_EXPRESSO_OPTIONS],
-                    ristretoOrLongShot: [...DEFAULT_RISTRETO_LONG_SHOT]
-                  }
+                    { title: MENU_TITLES.WATER_TITLE, type: 'dropdown', details: [DEFAULT_WATER] },
+                    { title: MENU_TITLES.LIQUID_SWEETNER_TITLE, type: 'counter', details: [DEFAULT_LIQUID_SWEETNER] },
+                    { title: MENU_TITLES.SWEETNER_PACKETS_TITLE, type: 'counter', details: [DEFAULT_SWEETNER_PACKETS] }
+                  ],
+                  espressoShotOptions: [
+                    { title: MENU_TITLES.ESPRESSO_SHOTS_TITLE, type: 'counter', details: [[SHOTS.SHOTS_COUNTER]] },
+                    { title: MENU_TITLES.ESPRESSO_ROAST_OPTIONS_TITLE, type: 'dropdown', details: [DEFAULT_EXPRESSO_OPTIONS] },
+                    { title: MENU_TITLES.RISTRETTO_OR_LONG_SHOT_TITLE, type: 'dropdown', details: [DEFAULT_RISTRETO_LONG_SHOT] }
+                  ]
                 }
               }
             ]
@@ -140,85 +121,120 @@ export const menuConfig: Menu[] = [
                 detailData: {
                   calories: 5,
                   size: [...DEFAULT_SIZE_OPTIONS_1],
-                  flavors: {
-                    syrups: [...DEFAULT_SYRUPS],
-                    sauces: [...DEFAULT_SAUCES]
-                  },
-                  toppings: {
-                    toppingOptions: {
-                      cinnamon: [...DEFAULT_CINNAMON_TOPPING],
-                      pumpkin: [...DEFAULT_PUMPKIN_TOPPING]
+                  flavors: [
+                    { title: MENU_TITLES.SYRUPS_TITLE, type: 'counter', details: [DEFAULT_SYRUPS] },
+                    { title: MENU_TITLES.SAUCES_TITLE, type: 'counter', details: [DEFAULT_SAUCES] }
+                  ],
+                  toppings: [
+                    {
+                      title: MENU_TITLES.TOPPING_OPTIONS_TITLE,
+                      type: 'dropdown',
+                      details: [DEFAULT_PUMPKIN_TOPPING, DEFAULT_CINNAMON_TOPPING]
                     },
-                    drizzle: {
-                      caramel: [...DEFAULT_CARAMEL_DRIZZLE],
-                      mocha: [...DEFAULT_MOCHA_DRIZZLE],
-                      spiced: [...DEFAULT_SPICED_DRIZZLE]
+                    {
+                      title: MENU_TITLES.DRIZZLE_TITLE,
+                      type: 'dropdown',
+                      details: [DEFAULT_CARAMEL_DRIZZLE, DEFAULT_MOCHA_DRIZZLE, DEFAULT_SPICED_DRIZZLE]
                     },
-                    coldFoam: {
-                      chocolate: [...DEFAULT_CHOCOLATE_COLDFOAM],
-                      pumpkin: [...DEFAULT_PUMPKIN_COLDFOAM],
-                      caramel: [...DEFAULT_CARAMEL_COLDFOAM],
-                      vanilla: [...DEFAULT_VANILLA_COLDFOAM]
+                    {
+                      title: MENU_TITLES.COLD_FOAM_TITLE,
+                      type: 'dropdown',
+                      details: [DEFAULT_CHOCOLATE_COLDFOAM, DEFAULT_PUMPKIN_COLDFOAM, DEFAULT_CARAMEL_COLDFOAM, DEFAULT_VANILLA_COLDFOAM]
                     },
-                    powders: [POWDERS.CINNAMON_POWDER],
-                    whippedCream: [WHIPPED_CREAM.WHIPPED_CREAM]
-                  },
-                  addIns: {
-                    powders: {
-                      chocolate: [
-                        CHOCOLATE_MALT_POWDER.EXTRA,
-                        CHOCOLATE_MALT_POWDER.LIGHT,
-                        CHOCOLATE_MALT_POWDER.NO_CHOCOLATE,
-                        CHOCOLATE_MALT_POWDER.CHOCOLATE,
-                        CHOCOLATE_MALT_POWDER.SUBSTITUTE
-                      ],
-                      vanilla: 0
-                    },
-                    lineTheCup: [LINE_THE_CUP.CARAMEL, LINE_THE_CUP.MOCHA],
-                    room: [ROOM.EXTRA, ROOM.LIGHT, ROOM.NO_ROOM, ROOM.ROOM],
-                    creamer: {
-                      milk: [MILK_CREAMER.EXTRA, MILK_CREAMER.LIGHT, MILK_CREAMER.NO_SPLASH, MILK_CREAMER.SPLASH],
-                      almondmilk: [ALMONDMILK.EXTRA, ALMONDMILK.LIGHT, ALMONDMILK.SPLASH],
-                      coconutmilk: [COCONUTMILK.EXTRA, COCONUTMILK.LIGHT, COCONUTMILK.NO_SPLASH, COCONUTMILK.SPLASH],
-                      cream: [CREAM.EXTRA, CREAM.LIGHT, CREAM.SPLASH],
-                      heavyCream: [HEAVY_CREAM.EXTRA, HEAVY_CREAM.LIGHT, HEAVY_CREAM.SPLASH],
-                      nonfatMilk: [NON_FAT_MILK.EXTRA, NON_FAT_MILK.LIGHT, NON_FAT_MILK.SPLASH],
-                      oatMilk: [OATMILK.EXTRA, OATMILK.LIGHT, OATMILK.NO_SPLASH, OATMILK.SPLASH, OATMILK.SUBSTITUTE],
-                      soymilk: [SOYMILK.EXTRA, SOYMILK.LIGHT, SOYMILK.SPLASH],
-                      wholeMilk: [WHOLE_MILK.EXTRA, WHOLE_MILK.LIGHT, WHOLE_MILK.SPLASH],
-                      vanillaSweetCream: [
-                        VANILLA_SWEET_CREAM.EXTRA,
-                        VANILLA_SWEET_CREAM.LIGHT,
-                        VANILLA_SWEET_CREAM.NO_SPLASH,
-                        VANILLA_SWEET_CREAM.SPLASH
+                    { title: MENU_TITLES.POWDERS_TITLE, type: 'dropdown', details: [POWDERS.CINNAMON_POWDER] },
+                    { title: MENU_TITLES.WHIPPED_CREAM_TITLE, type: 'dropdown', details: [WHIPPED_CREAM.WHIPPED_CREAM] }
+                  ],
+                  addIns: [
+                    { title: MENU_TITLES.POWDERS_TITLE, type: 'dropdown', details: [DEFAULT_CHOCOLATE_POWDERS] },
+                    { title: MENU_TITLES.LINE_THE_CUP_TITLE, type: 'dropdown', details: [DEFAULT_LINE_THE_CUP] },
+                    { title: MENU_TITLES.ROOM_TITLE, type: 'dropdown', details: [DEFAULT_ROOM] },
+                    {
+                      title: MENU_TITLES.CREAMER_TITLE,
+                      type: 'dropdown',
+                      details: [
+                        DEFAULT_MILK_CREAMER,
+                        DEFAULT_ALMONDMILK_CREAMER,
+                        DEFAULT_COCONUTMILK_CREAMER,
+                        DEFAULT_CREAM_CREAMER,
+                        DEFAULT_HEAVY_CREAM_CREAMER,
+                        DEFAULT_NON_FAT_MILK_CREAMER,
+                        DEFAULT_OAT_MILK_CREAMER,
+                        DEFAULT_SOY_MILK_CREAMER,
+                        DEFAULT_WHOLE_MILK_CREAMER,
+                        DEFAULT_VANILLA_CREAMER
                       ]
                     },
-                    liquidSweetner: [LIQUID_SWEETENER.CLASSIC_SYRUP, LIQUID_SWEETENER.HONEY_BLEND, LIQUID_SWEETENER.LIQUID_CANE_SUGAR],
-                    sweetnerPackets: [
-                      SWEETNER_PACKETS.SUGAR,
-                      SWEETNER_PACKETS.SUGAR_RAW,
-                      SWEETNER_PACKETS.HONEY,
-                      SWEETNER_PACKETS.SPLENDA,
-                      SWEETNER_PACKETS.STEVIA_RAW
-                    ]
-                  },
-                  espressoShotOptions: {
-                    expressoShots: 0,
-                    expressoRoastOptions: [
-                      EXPRESSO_ROAST_OPTIONS.SIGNATURE,
-                      EXPRESSO_ROAST_OPTIONS.BLONDE,
-                      EXPRESSO_ROAST_OPTIONS.DECAF,
-                      EXPRESSO_ROAST_OPTIONS.THIRD_DECAF,
-                      EXPRESSO_ROAST_OPTIONS.HALF_DECAF,
-                      EXPRESSO_ROAST_OPTIONS.TWO_THIRD_DECAF
-                    ]
-                  }
+                    { title: MENU_TITLES.LIQUID_SWEETNER_TITLE, type: 'counter', details: [DEFAULT_LIQUID_SWEETNER] },
+                    { title: MENU_TITLES.SWEETNER_PACKETS_TITLE, type: 'counter', details: [DEFAULT_SWEETNER_PACKETS] }
+                  ],
+                  espressoShotOptions: [
+                    { title: MENU_TITLES.ESPRESSO_SHOTS_TITLE, type: 'counter', details: [[SHOTS.SHOTS_COUNTER]] },
+                    { title: MENU_TITLES.ESPRESSO_ROAST_OPTIONS_TITLE, type: 'dropdown', details: [DEFAULT_EXPRESSO_OPTIONS] }
+                  ]
                 }
               },
               {
                 detailTitle: 'Caffè Misto',
                 detailImg: 'https://globalassets.starbucks.com/assets/d668acbc691b47249548a3eeac449916.jpg?impolicy=1by1_tight_288',
-                detailData: {}
+                detailData: {
+                  calories: 110,
+                  size: [...DEFAULT_SIZE_OPTIONS_1],
+                  milk: [
+                    { title: MENU_TITLES.MILK_OPTIONS_TITTLE, type: 'dropdown', details: [DEFAULT_MILK_OPTIONS] },
+                    { title: MENU_TITLES.MILK_FOAM_TITLE, type: 'dropdown', details: [DEFAULT_MILK_FOAM] },
+                    { title: MENU_TITLES.MILK_TEMPERATURE_TITLE, type: 'dropdown', details: [DEFAULT_MILK_TEMPERATURE] }
+                  ],
+                  flavors: [
+                    { title: MENU_TITLES.SYRUPS_TITLE, type: 'counter', details: [DEFAULT_SYRUPS] },
+                    { title: MENU_TITLES.SAUCES_TITLE, type: 'counter', details: [DEFAULT_SAUCES] }
+                  ],
+                  toppings: [
+                    {
+                      title: MENU_TITLES.TOPPING_OPTIONS_TITLE,
+                      type: 'dropdown',
+                      details: [DEFAULT_PUMPKIN_TOPPING, DEFAULT_CINNAMON_TOPPING]
+                    },
+                    {
+                      title: MENU_TITLES.DRIZZLE_TITLE,
+                      type: 'dropdown',
+                      details: [DEFAULT_CARAMEL_DRIZZLE, DEFAULT_MOCHA_DRIZZLE, DEFAULT_SPICED_DRIZZLE]
+                    },
+                    {
+                      title: MENU_TITLES.COLD_FOAM_TITLE,
+                      type: 'dropdown',
+                      details: [DEFAULT_CHOCOLATE_COLDFOAM, DEFAULT_PUMPKIN_COLDFOAM, DEFAULT_CARAMEL_COLDFOAM, DEFAULT_VANILLA_COLDFOAM]
+                    },
+                    { title: MENU_TITLES.POWDERS_TITLE, type: 'dropdown', details: [POWDERS.CINNAMON_POWDER] },
+                    { title: MENU_TITLES.WHIPPED_CREAM_TITLE, type: 'dropdown', details: [WHIPPED_CREAM.WHIPPED_CREAM] }
+                  ],
+                  addIns: [
+                    { title: MENU_TITLES.POWDERS_TITLE, type: 'dropdown', details: [DEFAULT_CHOCOLATE_POWDERS] },
+                    { title: MENU_TITLES.LINE_THE_CUP_TITLE, type: 'dropdown', details: [DEFAULT_LINE_THE_CUP] },
+                    { title: MENU_TITLES.ROOM_TITLE, type: 'dropdown', details: [DEFAULT_ROOM] },
+                    {
+                      title: MENU_TITLES.CREAMER_TITLE,
+                      type: 'dropdown',
+                      details: [
+                        DEFAULT_MILK_CREAMER,
+                        DEFAULT_ALMONDMILK_CREAMER,
+                        DEFAULT_COCONUTMILK_CREAMER,
+                        DEFAULT_CREAM_CREAMER,
+                        DEFAULT_HEAVY_CREAM_CREAMER,
+                        DEFAULT_NON_FAT_MILK_CREAMER,
+                        DEFAULT_OAT_MILK_CREAMER,
+                        DEFAULT_SOY_MILK_CREAMER,
+                        DEFAULT_WHOLE_MILK_CREAMER,
+                        DEFAULT_VANILLA_CREAMER
+                      ]
+                    },
+                    { title: MENU_TITLES.LIQUID_SWEETNER_TITLE, type: 'counter', details: [DEFAULT_LIQUID_SWEETNER] },
+                    { title: MENU_TITLES.SWEETNER_PACKETS_TITLE, type: 'counter', details: [DEFAULT_SWEETNER_PACKETS] }
+                  ],
+                  espressoShotOptions: [
+                    { title: MENU_TITLES.ESPRESSO_SHOTS_TITLE, type: 'counter', details: [[SHOTS.SHOTS_COUNTER]] },
+                    { title: MENU_TITLES.ESPRESSO_ROAST_OPTIONS_TITLE, type: 'dropdown', details: [DEFAULT_EXPRESSO_OPTIONS] }
+                  ]
+                }
               },
               {
                 detailTitle: 'Featured Starbucks® Dark Roast Coffee',

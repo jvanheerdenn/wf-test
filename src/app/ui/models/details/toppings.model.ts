@@ -1,14 +1,14 @@
-export interface Toppings {
-  toppingOptions?: ToppingOptions;
-  drizzle?: Drizzle;
-  coldFoam?: ColdFoam;
-  powders?: POWDERS[];
-  whippedCream?: WHIPPED_CREAM[];
-}
+import { UIType } from '../menu-config.model';
 
-export interface ToppingOptions {
-  pumpkin: PUMPKIN_SPICE[];
-  cinnamon: CINNAMON_DOLCE_SPRINKLES[];
+export interface Toppings {
+  title: string;
+  type: UIType;
+  details:
+    | [PUMPKIN_SPICE[], CINNAMON_DOLCE_SPRINKLES[]]
+    | [CARAMEL_DRIZZLE[], MOCHA_DRIZZLE[], SPICED_APPLE_DRIZZLE[]]
+    | [CHOCOLATE_CREAM_COLD[], PUMPKIN_CREAM_COLD[], SALTED_CARAMEL_CREAM_COLD[], VANILLA_SWEET_CREAM_COLD[]]
+    | [POWDERS]
+    | [WHIPPED_CREAM];
 }
 
 export enum PUMPKIN_SPICE {
@@ -23,12 +23,6 @@ export enum CINNAMON_DOLCE_SPRINKLES {
   LIGHT = 'Light Cinnamon Dolce Sprinkles',
   NO_CINNAMON = 'No Cinnamon Dolce Sprinkles',
   CINNAMON = 'Cinnamon Dolce Sprinkles'
-}
-
-export interface Drizzle {
-  caramel?: CARAMEL_DRIZZLE[];
-  mocha?: MOCHA_DRIZZLE[];
-  spiced?: SPICED_APPLE_DRIZZLE[];
 }
 
 export enum CARAMEL_DRIZZLE {
@@ -50,13 +44,6 @@ export enum SPICED_APPLE_DRIZZLE {
   LIGHT = 'Light Spiced Apple Drizzle',
   NO_SPICED_APPLE = 'No Spiced Apple Drizzle',
   SPICED_APPLE = 'Spiced Apple Drizzle'
-}
-
-export interface ColdFoam {
-  chocolate?: CHOCOLATE_CREAM_COLD[];
-  pumpkin?: PUMPKIN_CREAM_COLD[];
-  caramel?: SALTED_CARAMEL_CREAM_COLD[];
-  vanilla?: VANILLA_SWEET_CREAM_COLD[];
 }
 
 export enum CHOCOLATE_CREAM_COLD {

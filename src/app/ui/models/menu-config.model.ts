@@ -12,3 +12,5 @@ export interface SubmenuDetail {
   isDetail?: boolean;
   detailData?: DetailData;
 }
+
+export type UIType = 'dropdown' | 'counter';

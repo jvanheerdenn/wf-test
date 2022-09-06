@@ -1,11 +1,12 @@
+import { UIType } from '../menu-config.model';
+
 export interface ExpressoShotOptions {
-  expressoShots?: number;
-  expressoRoastOptions?: EXPRESSO_ROAST_OPTIONS[];
-  shotRep?: SHOT_PREP[];
-  ristretoOrLongShot?: RISTRETTO_LONG_SHOT[];
+  title: string;
+  type: UIType;
+  details?: [SHOTS[] | ESPRESSO_ROAST_OPTIONS[]] | [SHOT_PREP[]] | [RISTRETTO_LONG_SHOT[]];
 }
 
-export enum EXPRESSO_ROAST_OPTIONS {
+export enum ESPRESSO_ROAST_OPTIONS {
   SIGNATURE = 'Signature Espresso Roast',
   BLONDE = 'Blonde Espresso Roast',
   DECAF = 'Decaf Espresso Roast',
@@ -21,4 +22,8 @@ export enum SHOT_PREP {
 export enum RISTRETTO_LONG_SHOT {
   RISTRETTO = 'Ristretto',
   LONG_SHOT = 'Long Shot'
+}
+
+export enum SHOTS {
+  SHOTS_COUNTER = 'Shots'
 }
