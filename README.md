@@ -53,9 +53,9 @@ node --version
 
 You can download the .zip repository or you can use the following commands in your prompt:
 
-$ git clone https://github.com/jvanheerdenn/wf-test
-$ cd wf-test
-$ npm install
+     $ git clone https://github.com/jvanheerdenn/wf-test
+     $ cd wf-test
+     $ npm install
 
 <br><br>
 
@@ -86,7 +86,7 @@ Actually I was not able to finish the whole application because I'm not going to
 
 # App configuration
 
-The app is autoconfigured for running at http://localhost:4201.
+The app is autoconfigured for running at http://localhost:4200.
 
 ## Running the project in development
 
