@@ -8,13 +8,14 @@ import { Toppings } from './toppings.model';
 export interface DetailData {
   calories?: number;
   size?: SIZE_OPTIONS[];
-  milk?: Milk[];
-  flavors?: Flavors[];
-  toppings?: Toppings[];
-  tea?: Tea[];
-  addIns?: AddIns[];
-  espressoShotOptions?: ExpressoShotOptions[];
-  cupOptions?: CupSizes[];
+  customizations?: Customizations[];
+  // milk?: Milk[];
+  // flavors?: Flavors[];
+  // toppings?: Toppings[];
+  // tea?: Tea[];
+  // addIns?: AddIns[];
+  // espressoShotOptions?: ExpressoShotOptions[];
+  // cupOptions?: CupSizes[];
 }
 
 export enum SIZE_OPTIONS {
@@ -26,6 +27,11 @@ export enum SIZE_OPTIONS {
   SOLO = 'Solo 0.75 fl oz',
   TRIPLE = 'Triple 2.25 fl oz',
   QUAD = 'Quad 3 fl oz'
+}
+
+export interface Customizations {
+  title: string;
+  details: Milk[] | Flavors[] | Toppings[] | Tea[] | AddIns[] | ExpressoShotOptions[] | CupSizes[];
 }
 
 export interface Tea {

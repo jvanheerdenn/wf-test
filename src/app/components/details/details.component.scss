@@ -1,0 +1,239 @@
+.sb-details {
+  &__container {
+    background-color: #1f3933;
+    @media (min-width: 768px) {
+      padding-left: 2.4rem;
+      padding-right: 2.4rem;
+    }
+    @media (min-width: 1024px) {
+      padding-left: 131px;
+      padding-right: 4rem;
+    }
+  }
+
+  &__flex-center {
+    align-items: center;
+    @media (min-width: 1024px) {
+      display: flex;
+    }
+  }
+}
+
+.sb-detail-img {
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 420px;
+    padding-bottom: 1.6rem;
+    padding-top: 1.6rem;
+    flex-grow: 1;
+
+    @media (min-width: 1024px) {
+      margin-left: 0;
+      margin-right: 24px;
+    }
+    @media (min-width: 1100px) {
+      margin-left: 0;
+      margin-right: 44px;
+    }
+  }
+
+  &__block {
+    max-width: 180px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    @media (min-height: 600px) {
+      max-width: 300px;
+    }
+  }
+
+  &__pad-block {
+    padding-bottom: 100%;
+    width: 100%;
+    display: block;
+  }
+
+  &__absoulte-block {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__relative-block {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+  }
+
+  &__fade-in {
+    opacity: 1;
+    border-radius: inherit;
+    left: 0;
+    position: absolute;
+    top: 0;
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+.sb-detail-title {
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 420px;
+    padding-bottom: 0.8rem;
+    flex-grow: 1;
+    text-align: center;
+
+    @media (min-width: 1024px) {
+      margin-left: 24px;
+      margin-right: 0;
+      padding-bottom: 0;
+      text-align: left;
+    }
+    @media (min-width: 1100px) {
+      margin-left: 44px;
+      margin-right: 0;
+    }
+    @media (min-width: 1206px) {
+      margin-left: 88px;
+      margin-right: 0;
+    }
+  }
+}
+
+h1 {
+  font-size: 2.2rem;
+  line-height: 1.29;
+  font-weight: 700;
+  color: #fff;
+  @media (min-width: 375px) {
+    font-size: 2.8rem;
+  }
+
+  @media (min-height: 600px) and (min-width: 768px) {
+    line-height: 1.29;
+  }
+
+  @media (min-width: 768px) {
+    line-height: 1.385;
+  }
+}
+
+.sb-detail-calories {
+  &__container {
+    font-size: 1.9rem;
+    justify-content: center;
+    color: hsla(0, 0%, 100%, 0.7);
+    align-items: center;
+    display: flex;
+
+    @media (min-height: 600px) and (min-width: 768px) {
+      font-size: 2.4rem;
+    }
+    @media (min-width: 1024px) {
+      justify-content: left;
+    }
+  }
+
+  &__number {
+    margin-left: -16px;
+    padding-right: 0.4rem;
+
+    @media (min-width: 1024px) {
+      margin-left: 0;
+    }
+  }
+}
+
+.sb-detail-customizations {
+  &__container {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    padding-top: 3.2rem;
+
+    @media (min-width: 768px) {
+      padding-left: 99px;
+      padding-right: 2.4rem;
+    }
+
+    @media (min-width: 1024px) {
+      padding-left: 131px;
+      padding-right: 4rem;
+    }
+  }
+}
+
+.sb-details-left-menu {
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 420px;
+    flex-grow: 1;
+
+    @media (min-width: 1100px) {
+      margin-left: 0;
+      margin-right: 44px;
+    }
+    @media (min-width: 1024px) {
+      margin-left: 0;
+      margin-right: 24px;
+    }
+    @media (min-width: 1206px) {
+      margin-left: 0;
+      margin-right: 88px;
+    }
+  }
+
+  &__title-container {
+    font-weight: 600;
+    margin-bottom: 3.2rem;
+
+    @media (min-width: 768px) {
+      font-size: 23px;
+    }
+  }
+
+  &__bottom-border {
+    padding: 0 8px 12px;
+    position: relative;
+    display: block;
+
+    &::after {
+      background: #d4e9e2;
+      border-radius: 12px;
+      bottom: 0;
+      content: '';
+      height: 4px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
+
+.sb-details-right-menu {
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 420px;
+    flex-grow: 1;
+
+    @media (min-width: 1024px) {
+      margin-left: 24px;
+      margin-right: 0;
+    }
+    @media (min-width: 1100px) {
+      margin-left: 44px;
+      margin-right: 0;
+    }
+    @media (min-width: 1206px) {
+      margin-left: 88px;
+      margin-right: 0;
+    }
+  }
+}

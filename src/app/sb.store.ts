@@ -17,7 +17,8 @@ const defaultState: SbStoreState = {
   menu: [],
   selectedMenu: [],
   selectedMenuTitle: '',
-  spinner: false
+  spinner: false,
+  selectedDetail: null
 };
 
 @Injectable({ providedIn: 'root' })
@@ -43,6 +44,7 @@ export class SbStore extends ComponentStore<SbStoreState> {
 
   readonly getSelectedMenu$ = this.select(({ selectedMenu }) => selectedMenu);
   readonly getStatus$ = this.select(({ status }) => status);
+  readonly getSelectedDetail$ = this.select(({ selectedDetail }) => selectedDetail);
 
   // UPDATERS
   readonly setMenu = this.updater((state: SbStoreState, menu: Menu[]) => ({
@@ -61,6 +63,7 @@ export class SbStore extends ComponentStore<SbStoreState> {
     ...state,
     selectedMenuTitle
   }));
+  readonly setSelectedDetail = this.updater((state: SbStoreState, selectedDetail: SubmenuDetail) => ({ ...state, selectedDetail }));
 
   //EFFECTS
   readonly getMenu = this.effect(($trigger) =>

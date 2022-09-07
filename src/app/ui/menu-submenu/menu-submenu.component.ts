@@ -12,8 +12,13 @@ import { SubmenuDetail } from '../models/menu-config.model';
 export class MenuSubmenuComponent {
   @Input('menu') getSelectedMenu$!: Observable<MenuBase[]>;
   @Output() setMenuItems = new EventEmitter<string>();
+  @Output() detailItem = new EventEmitter<SubmenuDetail>();
 
   setSelectedMenu(selectedMenu: SubmenuDetail) {
+    if (selectedMenu.detailData) {
+      this.detailItem.emit(selectedMenu);
+      return;
+    }
     this.setMenuItems.emit(selectedMenu.detailTitle);
   }
 }

@@ -9,7 +9,6 @@ export interface SubmenuDetail {
   detailTitle: string;
   detailImg: string;
   detailList?: Menu[];
-  isDetail?: boolean;
   detailData?: DetailData;
 }
 

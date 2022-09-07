@@ -1,13 +1,12 @@
 .sb-menu {
   &__container {
     padding-top: 32px;
+    @media (min-width: 768px) {
+      padding-left: 99px;
+    }
     @media (min-width: 1024px) {
       padding-left: 131px;
       display: flex;
-    }
-
-    @media (min-width: 768px) {
-      padding-left: 99px;
     }
   }
 }
@@ -17,16 +16,16 @@
   padding-right: 1.6rem;
   padding-left: 1.6rem;
 
+  @media (max-width: 768px) {
+    padding-left: 0;
+    padding-top: 0;
+  }
+
   @media (min-width: 1024px) {
     flex: 1 1 0;
     overflow: auto;
     padding-left: 119px;
     padding-right: 9%;
     padding-top: 2.5rem;
-  }
-
-  @media (max-width: 768px) {
-    padding-left: 0;
-    padding-top: 0;
   }
 }

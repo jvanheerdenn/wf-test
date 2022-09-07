@@ -33,6 +33,11 @@ import {
 } from './details/toppings.model';
 
 export enum MENU_TITLES {
+  FLAVORS_TITLE = 'Flavors',
+  TOPPINGS_TITLE = 'Toppings',
+  ADD_INS_TITLE = 'Add-Ins',
+  ESPRESSO_OR_SHOT_OPTIONS_TITLE = 'Espresso & Shot Options',
+  MILK_TITLE = 'Milk',
   SYRUPS_TITLE = 'Syrups',
   SAUCES_TITLE = 'Sauces',
   TOPPING_OPTIONS_TITLE = 'Topping Options',

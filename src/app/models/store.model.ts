@@ -7,6 +7,7 @@ export interface SbStoreState {
   selectedMenu: MenuBase[];
   selectedMenuTitle: string;
   spinner: boolean;
+  selectedDetail: SubmenuDetail | null;
 }
 
 export interface MenuBase {

@@ -1,1 +1,73 @@
-<p>details works!</p>
+<section *ngIf="details$ | async as selectedDetail">
+  <div class="sb-details__container">
+    <div class="sb-details__flex-center">
+      <div class="sb-detail-img__container">
+        <div class="sb-detail-img__block">
+          <div class="sb-detail-img__pad-block"></div>
+          <div class="sb-detail-img__absoulte-block">
+            <div class="sb-detail-img__relative-block">
+              <img
+                class="sb-detail-img__fade-in"
+                [src]="selectedDetail.detailImg"
+                [alt]="selectedDetail.detailTitle"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-detail-title__container">
+        <h1
+          class="sb-heading text-bold color-textWhite pb2 lg-pb3 productName___2VJl6"
+          tabindex="-1"
+          data-e2e="product-name"
+        >
+          {{ selectedDetail.detailTitle }}
+        </h1>
+        <div class="sb-detail-calories__container">
+          <span class="sb-detail-calories__number">{{
+            selectedDetail.detailData?.calories
+          }}</span>
+          <span class="pl-1">calories</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sb-detail-customizations__container">
+    <div class="position-relative">
+      <div class="d-lg-flex">
+        <div class="sb-details-left-menu__container">
+          <h2 class="sb-details-left-mençu__title-container" tabindex="-1">
+            <span class="sb-details-left-menu__bottom-border"
+              >Size options</span
+            >
+          </h2>
+          <div class="my-5">
+            <div class="form-floating">
+              <select class="form-select" id="labelText">
+                <option selected>
+                  {{ selectedDetail?.detailData?.size?.shift() }}
+                </option>
+                <option *ngFor="let size of selectedDetail.detailData?.size">
+                  {{ size }}
+                </option>
+              </select>
+              <label for="labelText">Size Options</label>
+            </div>
+          </div>
+        </div>
+        <div class="sb-details-right-menu__container">
+          <div>
+            <h2 class="sb-details-left-menu__title-container" tabindex="-1">
+              <span class="sb-details-left-menu__bottom-border"
+                >Customizations</span
+              >
+            </h2>
+            <app-custom-button
+              [details]="selectedDetail.detailData"
+            ></app-custom-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -8,6 +8,7 @@
   <div class="sb-menu-options">
     <app-menu-submenu
       (setMenuItems)="defineMenuTitles($event)"
+      (detailItem)="setSelectedDetail($event)"
       [menu]="getSelectedMenu$"
     ></app-menu-submenu>
   </div>

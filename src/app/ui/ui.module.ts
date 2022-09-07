@@ -5,8 +5,16 @@ import { StarbucksLoaderComponent } from './starbucks-loader/starbucks-loader.co
 import { LeftMenuNavbarComponent } from './left-menu-navbar/left-menu-navbar.component';
 import { CardComponent } from './card/card.component';
 import { MenuSubmenuComponent } from './menu-submenu/menu-submenu.component';
+import { CustomButtonComponent } from './custom-button/custom-button.component';
 
-const COMPONENTS = [TopMenuNavbarComponent, StarbucksLoaderComponent, LeftMenuNavbarComponent, CardComponent, MenuSubmenuComponent];
+const COMPONENTS = [
+  TopMenuNavbarComponent,
+  StarbucksLoaderComponent,
+  LeftMenuNavbarComponent,
+  CardComponent,
+  MenuSubmenuComponent,
+  CustomButtonComponent
+];
 const MODULES = [CommonModule];
 @NgModule({
   declarations: [...COMPONENTS],

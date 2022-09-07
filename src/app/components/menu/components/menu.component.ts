@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MenuBase } from 'src/app/models/store.model';
 import { SbStore } from 'src/app/sb.store';
+import { SubmenuDetail } from 'src/app/ui/models/menu-config.model';
 
 @Component({
   selector: 'app-menu',
@@ -13,7 +15,7 @@ export class MenuComponent implements OnInit {
   menuTitles$!: Observable<MenuBase[]>;
   getSelectedMenu$ = this.sbStore.getSelectedMenu$;
 
-  constructor(private readonly sbStore: SbStore) {}
+  constructor(private readonly sbStore: SbStore, private readonly router: Router) {}
 
   ngOnInit(): void {
     this.initStore();
@@ -26,6 +28,11 @@ export class MenuComponent implements OnInit {
       return;
     }
     this.menuTitles$ = this.sbStore.getMenuTitles$();
+  }
+
+  setSelectedDetail(selectedDetail: SubmenuDetail): void {
+    this.sbStore.setSelectedDetail(selectedDetail);
+    this.router.navigate(['/details']);
   }
 
   private initStore(): void {
