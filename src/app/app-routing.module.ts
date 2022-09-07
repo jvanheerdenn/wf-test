@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./components/rewards/rewards.module').then((m) => m.RewardsModule)
   },
   {
+    path: 'details',
+    loadChildren: () => import('./components/details/details.module').then((m) => m.DetailsModule)
+  },
+  {
     path: '',
     redirectTo: 'menu',
     pathMatch: 'full'
