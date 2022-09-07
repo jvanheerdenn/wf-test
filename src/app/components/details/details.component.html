@@ -45,7 +45,7 @@
             <div class="form-floating">
               <select class="form-select" id="labelText">
                 <option selected>
-                  {{ selectedDetail?.detailData?.size?.shift() }}
+                  {{ selectedDetail?.detailData?.size?.pop() }}
                 </option>
                 <option *ngFor="let size of selectedDetail.detailData?.size">
                   {{ size }}
@@ -62,9 +62,14 @@
                 >Customizations</span
               >
             </h2>
-            <app-custom-button
-              [details]="selectedDetail.detailData"
-            ></app-custom-button>
+            <div
+              *ngFor="
+                let customization of selectedDetail.detailData?.customizations
+              "
+              class="pb-4"
+            >
+              <app-custom-button [details]="customization"></app-custom-button>
+            </div>
           </div>
         </div>
       </div>

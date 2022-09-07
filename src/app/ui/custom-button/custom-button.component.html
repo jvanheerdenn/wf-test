@@ -1,51 +1,99 @@
-<div class="col-md">
-  <div class="form-floating">
-    <input
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvas"
-      type="button"
-      class="form-control"
-      id="floatingInputGrid"
-      value="Some text as placeholder. In real life you can have the elements you have
-      chosen. Like, text, images, lists, etc."
-      style="text-align: left"
-    />
-    <label for="floatingInputGrid">Email address</label>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <div
-    class="offcanvas offcanvas-end"
-    tabindex="-1"
-    id="offcanvas"
-    aria-labelledby="offcanvasNavbarLabel"
-  >
-    <div class="offcanvas-body">
-      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-        <div class="bg-white sb-hamburguer-nav pt-5">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-5">
-            <li class="sb-offcanvas__selectors">
-              <div class="offcanvas-header">
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="offcanvas"
-                  aria-label="Close"
-                ></button>
-              </div>
-            </li>
-            <li class="sb-offcanvas__selectors">
-              <a
-                class="nav-link nav-link__offcanvas py-0"
-                data-bs-dismiss="offcanvas"
-                aria-current="page"
-                >asd</a
-              >
-            </li>
-          </ul>
-        </div>
-      </ul>
+<section>
+  <form [formGroup]="form">
+    <div class="col-md">
+      <div class="form-floating">
+        <input
+          type="button"
+          class="form-control"
+          id="floatingInputGrid"
+          data-bs-toggle="offcanvas"
+          [attr.data-bs-target]="
+            '#' +
+            customization.title
+              .toLowerCase()
+              .replace('&', '')
+              .split(' ')
+              .join('_')
+          "
+          style="text-align: left"
+        />
+        <!-- [formControlName]="customization.title.toLowerCase()"-->
+        <label for="floatingInputGrid">{{ customization.title }}</label>
+      </div>
     </div>
-  </div>
-</div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      [id]="
+        customization.title.toLowerCase().replace('&', '').split(' ').join('_')
+      "
+      aria-labelledby="offcanvasNavbarLabel"
+    >
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <div class="bg-white pt-5">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-5">
+              <li class="sb-offcanvas__selectors">
+                <div class="offcanvas-header">
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
+                </div>
+              </li>
+              <li>
+                <div class="sb-detail-main-title__container">
+                  <h2 class="sb-detail-main-title__title-format" tabindex="-1">
+                    {{ customization.title }}
+                  </h2>
+                </div>
+              </li>
+              <li
+                class="sb-offcanvas__selectors"
+                *ngFor="let detail of customization?.details"
+              >
+                <div>
+                  <h3 class="sb-detail-title__container">
+                    {{ detail.title | uppercase }}
+                  </h3>
+                  <div>
+                    <div
+                      class="sb-detail-input__container"
+                      *ngIf="detail.type === 'dropdown'"
+                    >
+                      <div class="form-floating">
+                        <select class="form-select" id="labelText">
+                          <option *ngFor="let enum of detail.details">
+                            {{ enum }}
+                          </option>
+                        </select>
+                        <label for="labelText">{{ detail.title }}</label>
+                      </div>
+                    </div>
+                    <div *ngIf="detail.type === 'counter'">
+                      <ng-container *ngFor="let combo of detail.details[0]">
+                        <div class="sb-detail-input__container">
+                          <div class="sb-detail-input__text-container">
+                            <input
+                              type="button"
+                              class="form-control no-border"
+                              value="Add {{ combo }}"
+                              style="text-align: left"
+                            />
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </form>
+</section>

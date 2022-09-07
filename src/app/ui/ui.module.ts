@@ -6,6 +6,7 @@ import { LeftMenuNavbarComponent } from './left-menu-navbar/left-menu-navbar.com
 import { CardComponent } from './card/card.component';
 import { MenuSubmenuComponent } from './menu-submenu/menu-submenu.component';
 import { CustomButtonComponent } from './custom-button/custom-button.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   TopMenuNavbarComponent,
@@ -15,7 +16,7 @@ const COMPONENTS = [
   MenuSubmenuComponent,
   CustomButtonComponent
 ];
-const MODULES = [CommonModule];
+const MODULES = [CommonModule, ReactiveFormsModule];
 @NgModule({
   declarations: [...COMPONENTS],
   imports: [...MODULES],

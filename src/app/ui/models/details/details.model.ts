@@ -1,21 +1,9 @@
 import { UIType } from '../menu-config.model';
-import { AddIns } from './add-ins.model';
-import { ExpressoShotOptions } from './espresso-shot-options.model';
-import { Flavors } from './flavors.model';
-import { Milk } from './milk.model';
-import { Toppings } from './toppings.model';
 
 export interface DetailData {
   calories?: number;
   size?: SIZE_OPTIONS[];
   customizations?: Customizations[];
-  // milk?: Milk[];
-  // flavors?: Flavors[];
-  // toppings?: Toppings[];
-  // tea?: Tea[];
-  // addIns?: AddIns[];
-  // espressoShotOptions?: ExpressoShotOptions[];
-  // cupOptions?: CupSizes[];
 }
 
 export enum SIZE_OPTIONS {
@@ -31,7 +19,13 @@ export enum SIZE_OPTIONS {
 
 export interface Customizations {
   title: string;
-  details: Milk[] | Flavors[] | Toppings[] | Tea[] | AddIns[] | ExpressoShotOptions[] | CupSizes[];
+  details: BaseDetailCustomization[];
+}
+
+export interface BaseDetailCustomization {
+  title: string;
+  type: UIType;
+  details: any;
 }
 
 export interface Tea {
