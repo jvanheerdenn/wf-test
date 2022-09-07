@@ -3,7 +3,7 @@ import { UIType } from '../menu-config.model';
 export interface DetailData {
   calories?: number;
   size?: SIZE_OPTIONS[];
-  customizations?: Customizations[];
+  customizations: Customizations[];
 }
 
 export enum SIZE_OPTIONS {

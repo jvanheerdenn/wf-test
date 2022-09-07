@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { UiModule } from 'src/app/ui/ui.module';
 
 import { MenuComponent } from './menu.component';
 
@@ -8,12 +11,10 @@ describe('MenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MenuComponent ]
-    })
-    .compileComponents();
-  });
+      declarations: [MenuComponent],
+      imports: [RouterTestingModule, UiModule, ReactiveFormsModule]
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
